@@ -13,7 +13,9 @@ namespace WebService
     {
         public static void Main(string[] args)
         {
+            var config = new ConfigurationBuilder().AddCommandLine(args).AddEnvironmentVariables().Build();
             CreateHostBuilder(args).Build().Run();
+           
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

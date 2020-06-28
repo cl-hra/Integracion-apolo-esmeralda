@@ -32,6 +32,12 @@ namespace WebService.Controllers
             _db = db;
 
         }
+        [HttpGet]
+        [Route("inicio")]
+        public string Get()
+        {
+            return "Api Funcionando Correctamente...";
+        }
 
         /// <summary>
         /// 

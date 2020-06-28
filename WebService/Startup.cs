@@ -36,7 +36,8 @@ namespace WebService
             services.AddControllers();
             //Servicio BD
             //services.Add(new ServiceDescriptor(typeof(EsmeraldaContext), new EsmeraldaContext(Configuration.GetConnectionString("DefaultConnection"))));
-            services.AddDbContextPool<EsmeraldaContext>(o => o.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContextPool<EsmeraldaContext>(o => o.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
             //Servicio de TOKE
             var key = Encoding.ASCII.GetBytes(Configuration["JWT:Key"]);
             services.AddAuthentication(x =>
@@ -64,7 +65,7 @@ namespace WebService
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
