@@ -177,5 +177,14 @@ namespace WebService.Request
         /// </summary>
         public DateTime? created_at { get; set; }
         //public DateTime? deleted_at { get; set; }
+        
+        /// <summary>
+        /// Indica si el caso es por búsqueda activa o por atención médica
+        /// </summary>
+        /// <remarks>
+        /// true -> Búsqueda activa
+        /// false -> Atención médica
+        /// </remarks>
+        public bool? busqueda_activa { get; set; }
     }
 }

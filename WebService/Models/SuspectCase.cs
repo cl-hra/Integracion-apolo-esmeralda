@@ -20,7 +20,7 @@ namespace WebService.Models
         public string pcr_sars_cov_2 { get; set; }
         public string sample_type { get; set; }
         public long? validator_id { get; set; }
-        public int? epivigila { get; set; }
+        public string epivigila { get; set; }
         public bool? gestation { get; set; }
         public int? gestation_week { get; set; }
         public bool? close_contact { get; set; }
@@ -35,5 +35,6 @@ namespace WebService.Models
         public long? minsal_ws_id { get; set; }
         public string ws_minsal_message { get; set; }
         public bool? ws_pntm_mass_sending { get; set; }
+        public string case_type { get; set; }
     }
 }

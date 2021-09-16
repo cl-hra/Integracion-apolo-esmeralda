@@ -38,27 +38,23 @@ namespace WebService
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
+                       .UseSerilog(
+                            (context, logConfig) =>
+                            {
+                                logConfig.ReadFrom.Configuration(context.Configuration)
+                                         .Enrich.WithCorrelationId()
+                                         .Enrich.WithCorrelationIdHeader()
+                                         .Enrich.WithProperty("ApplicationName", "API Integración Esmeralda")
+                                         .Enrich.WithProperty(
+                                              "Environment",
+                                              context.HostingEnvironment.EnvironmentName
+                                          );
+                            } )
                        .ConfigureWebHostDefaults(
                             webBuilder =>
                             {
                                 webBuilder.UseStartup<Startup>()
-                                          .CaptureStartupErrors(true)
-                                          .UseSerilog(
-                                               (hostContext, logConfig) =>
-                                               {
-                                                   logConfig.ReadFrom.Configuration(hostContext.Configuration)
-                                                            .Enrich.WithCorrelationId()
-                                                            .Enrich.WithCorrelationIdHeader()
-                                                            .Enrich.WithProperty(
-                                                                 "ApplicationName",
-                                                                 "API Integración Esmeralda"
-                                                             )
-                                                            .Enrich.WithProperty(
-                                                                 "Environment",
-                                                                 hostContext.HostingEnvironment.EnvironmentName
-                                                             );
-                                               }
-                                           );
+                                          .CaptureStartupErrors(true);
                             }
                         );
         }

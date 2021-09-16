@@ -33,7 +33,7 @@ namespace WebService
                           .EnableRetryOnFailure();
                 }
             );
-
+            options.EnableSensitiveDataLogging();
             return options;
         }
     }

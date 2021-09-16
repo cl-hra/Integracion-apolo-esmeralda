@@ -24,6 +24,6 @@ namespace WebService.Models
         public string paciente_prevision { get; set; }
         public string paciente_pasaporte { get; set; }
         public int paciente_ext_paisorigen { get; set; }
-
+        public bool? busqueda_activa { get; set; }
     }
 }
